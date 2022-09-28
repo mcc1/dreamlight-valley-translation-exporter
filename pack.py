@@ -63,8 +63,8 @@ def encode_file(input_file: Path, output_location=None):
 
 
 if __name__ == "__main__":
-    for path in Path("zh_TW").glob("**/*.txt"):
-        encode_file(path, "working" / path.relative_to("./temp"))
+    for path in Path("working").glob("**/*.txt"):
+        encode_file(path, "temp" / path.relative_to("./working"))
 
     import zipfile
 
