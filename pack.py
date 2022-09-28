@@ -66,10 +66,8 @@ if __name__ == "__main__":
     for path in Path("working").glob("**/*.txt"):
         encode_file(path, "temp" / path.relative_to("./working"))
 
-    import zipfile
+    # import zipfile
 
-    with zipfile.ZipFile(
-        "LocDB_zh-CN.zip", mode="w", compression=zipfile.ZIP_DEFLATED, compresslevel=9
-    ) as zf:
-        for path in Path("temp").glob("**/*.locbin"):
-            zf.write(path)
+    # with zipfile.ZipFile("LocDB_zh-CN.zip", mode="w", compression=zipfile.ZIP_DEFLATED) as zf:
+    #     for path in Path("temp").glob("**/*.locbin"):
+    #         zf.write(path)
