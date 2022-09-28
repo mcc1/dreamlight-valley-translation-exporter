@@ -64,12 +64,12 @@ def encode_file(input_file: Path, output_location=None):
 
 if __name__ == "__main__":
     for path in Path("zh_TW").glob("**/*.txt"):
-        encode_file(path, "working" / path.relative_to("./zh_TW"))
+        encode_file(path, "working" / path.relative_to("./temp"))
 
     import zipfile
 
     with zipfile.ZipFile(
         "LocDB_zh-CN.zip", mode="w", compression=zipfile.ZIP_DEFLATED, compresslevel=9
     ) as zf:
-        for path in Path("working").glob("**/*.locbin"):
+        for path in Path("temp").glob("**/*.locbin"):
             zf.write(path)

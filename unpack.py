@@ -73,4 +73,4 @@ if __name__ == "__main__":
     for path in Path("./src").glob("**/*.locbin"):
         if path.name == "tutorial.locbin":
             continue
-        decode_file(path, "zh_TW" / path.relative_to("./src"))
+        decode_file(path, "working" / path.relative_to("./src"))

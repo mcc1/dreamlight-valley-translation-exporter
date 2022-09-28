@@ -172,4 +172,4 @@ cython_debug/
 
 src/
 working/
-zh_TW/
+temp/
