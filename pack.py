@@ -62,12 +62,20 @@ def encode_file(input_file: Path, output_location=None):
         wp.close()
 
 
+def zip_translation_pack(filepath: str, outputfile: str = 'LocDB_zh-CN.zip'):
+    import zipfile
+    # hardlink toturial.locbin from src folder
+    filepath = Path(filepath)
+    if Path('src/tutorial.locbin').exists() and not (tmp := filepath / 'tutorial.locbin').exists():
+        tmp.hardlink_to('src/tutorial.locbin')
+
+    with zipfile.ZipFile(outputfile, mode="w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
+        for path in filepath.glob('**/*.locbin'):
+            zf.write(path, arcname=path.relative_to(filepath))
+
+
 if __name__ == "__main__":
     for path in Path("working").glob("**/*.txt"):
         encode_file(path, "temp" / path.relative_to("./working"))
 
-    # import zipfile
-
-    # with zipfile.ZipFile("LocDB_zh-CN.zip", mode="w", compression=zipfile.ZIP_DEFLATED) as zf:
-    #     for path in Path("temp").glob("**/*.locbin"):
-    #         zf.write(path)
+    zip_translation_pack("temp")
