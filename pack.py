@@ -59,7 +59,8 @@ def encode_file(input_file: Path, output_location=None):
                     key = data.group(1)
                     val = data.group(2)
                     wp.write(encode_data(key, val))
-        wp.close()
+        if wp is not None:
+            wp.close()
 
 
 def zip_translation_pack(filepath: str, outputfile: str = 'LocDB_zh-CN.zip'):
