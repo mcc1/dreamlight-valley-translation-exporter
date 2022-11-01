@@ -167,6 +167,8 @@ cython_debug/
 
 .vscode/
 
+.idea/
+
 # temporary files
 *.zip
 .locbin
