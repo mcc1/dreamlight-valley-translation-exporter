@@ -67,8 +67,8 @@ def zip_translation_pack(filepath: str, outputfile: str = 'LocDB_zh-CN.zip'):
     import zipfile
     # hardlink toturial.locbin from src folder
     filepath = Path(filepath)
-    if Path('src/tutorial.locbin').exists() and not (tmp := filepath / 'tutorial.locbin').exists():
-        tmp.hardlink_to('src/tutorial.locbin')
+    # if Path('src/tutorial.locbin').exists() and not (tmp := filepath / 'tutorial.locbin').exists():
+    #     tmp.hardlink_to('src/tutorial.locbin')
 
     with zipfile.ZipFile(outputfile, mode="w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
         for path in filepath.glob('**/*.locbin'):

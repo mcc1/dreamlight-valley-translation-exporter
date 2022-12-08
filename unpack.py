@@ -71,6 +71,6 @@ def decode_file(input_file: Path, output_location=None):
 
 if __name__ == "__main__":
     for path in Path("./src").glob("**/*.locbin"):
-        if path.name == "tutorial.locbin":
-            continue
+        # if path.name == "tutorial.locbin":
+        #     continue
         decode_file(path, "working" / path.relative_to("./src"))
